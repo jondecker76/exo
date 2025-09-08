@@ -85,6 +85,17 @@ The current recommended way to install exo is from source.
 
 ### From source
 
+#### Using uv (recommended)
+
+```sh
+git clone https://github.com/exo-explore/exo.git
+cd exo
+uv sync
+# On macOS with Apple Silicon, also install MLX support:
+uv sync --extra apple-silicon
+```
+
+#### Using pip
 
 ```sh
 git clone https://github.com/exo-explore/exo.git
@@ -114,11 +125,17 @@ source install.sh
 #### Device 1:
 
 ```sh
+# If installed with uv:
+uv run exo
+# If installed with pip:
 exo
 ```
 
 #### Device 2:
 ```sh
+# If installed with uv:
+uv run exo
+# If installed with pip:
 exo
 ```
 
@@ -214,12 +231,18 @@ You can read about tinygrad-specific env vars [here](https://docs.tinygrad.org/e
 ### Example Usage on a single device with "exo run" command
 
 ```sh
+# If installed with uv:
+uv run exo run llama-3.2-3b
+# If installed with pip:
 exo run llama-3.2-3b
 ```
 
 With a custom prompt:
 
 ```sh
+# If installed with uv:
+uv run exo run llama-3.2-3b --prompt "What is the meaning of exo?"
+# If installed with pip:
 exo run llama-3.2-3b --prompt "What is the meaning of exo?"
 ```
 
@@ -236,6 +259,9 @@ Models are downloaded from Hugging Face. If you are running exo in a country wit
 To download models from a proxy endpoint, set the `HF_ENDPOINT` environment variable. For example, to run exo with the huggingface mirror endpoint:
 
 ```sh
+# If installed with uv:
+HF_ENDPOINT=https://hf-mirror.com uv run exo
+# If installed with pip:
 HF_ENDPOINT=https://hf-mirror.com exo
 ```
 
@@ -244,12 +270,18 @@ HF_ENDPOINT=https://hf-mirror.com exo
 Enable debug logs with the DEBUG environment variable (0-9).
 
 ```sh
+# If installed with uv:
+DEBUG=9 uv run exo
+# If installed with pip:
 DEBUG=9 exo
 ```
 
 For the **tinygrad** inference engine specifically, there is a separate DEBUG flag `TINYGRAD_DEBUG` that can be used to enable debug logs (1-6).
 
 ```sh
+# If installed with uv:
+TINYGRAD_DEBUG=2 uv run exo
+# If installed with pip:
 TINYGRAD_DEBUG=2 exo
 ```
 
